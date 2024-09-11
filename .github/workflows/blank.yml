@@ -47,9 +47,9 @@ jobs:
             zip -r file ${{ steps.release-label.outputs.tag }}
             mv file ${{ env.ARTIFACT_PATH }}
           done
-      - name: Create Release.md
+      - name: Create release.md
         run: |
-          ls
+          touch release.md
 
       - name: Automatic Releases
         uses: ncipollo/release-action@v1
