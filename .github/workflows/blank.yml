@@ -42,10 +42,10 @@ jobs:
         id: get-latest-tag
         if: ${{ steps.release-label.outputs.level != null }}
 
-      - run: touch ${{ steps.release-label.outputs.tag }}
+      - run: touch ${{ steps.get-latest-tag.outputs.tag }}
       - run: |
           for file in ${{ github.workspace }}/*.zip; do
-            zip -r file ${{ steps.release-label.outputs.tag }}
+            zip -r file ${{ steps.get-latest-tag.outputs.tag }}
             mv file ${{ env.ARTIFACT_PATH }}
           done
       - name: Create release.md
@@ -55,8 +55,8 @@ jobs:
       - name: Automatic Releases
         uses: ncipollo/release-action@v1
         with:
-          tag: ${{ steps.release-label.outputs.tag }}
-          name: "${{ steps.release-label.outputs.tag }}"
+          tag: ${{ steps.get-latest-tag.outputs.tag }}
+          name: "${{ steps.get-latest-tag.outputs.tag }}"
           allowUpdates: true
           bodyFile: release.md
           artifacts: |
