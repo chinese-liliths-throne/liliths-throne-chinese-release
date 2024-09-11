@@ -31,7 +31,7 @@ jobs:
 
       - id: getGames
         name: Get games
-        uses: robinraju/release-downloader@v1.8
+        uses: robinraju/release-downloader@v1
         with:
           repository: "chinese-liliths-throne/liliths-throne-chinese-localization"
           latest: true
