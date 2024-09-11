@@ -35,6 +35,7 @@ jobs:
         with:
           repository: "chinese-liliths-throne/liliths-throne-chinese-localization"
           latest: true
+          preRelease: true
           fileName: liliths-throne*.zip
           
       - uses: actions-ecosystem/action-get-latest-tag@v1
