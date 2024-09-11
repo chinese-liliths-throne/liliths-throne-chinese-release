@@ -50,8 +50,8 @@ jobs:
 
       - run: |
           for file in ${{ github.workspace }}/*.zip; do
-            zip -r file ${{ steps.get-latest-tag.outputs.tag }}
-            mv file ${{ env.ARTIFACT_PATH }}
+            zip -r ${file} ${{ steps.get-latest-tag.outputs.tag }}
+            mv ${file} ${{ env.ARTIFACT_PATH }}
           done
       - name: Create release.md
         run: |
