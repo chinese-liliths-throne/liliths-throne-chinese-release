@@ -26,6 +26,9 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
+        with:
+            fetch-depth: 0
+
       - uses: actions/setup-python@v5
       - run: mkdir -p ${{ env.ARTIFACT_PATH }}
 
@@ -42,7 +45,10 @@ jobs:
         id: get-latest-tag
         if: ${{ steps.release-label.outputs.level != null }}
 
-      - run: touch ${{ steps.get-latest-tag.outputs.tag }}
+      - run: |
+          echo ${{ steps.get-latest-tag.outputs.tag }}
+          touch ${{ steps.get-latest-tag.outputs.tag }}
+
       - run: |
           for file in ${{ github.workspace }}/*.zip; do
             zip -r file ${{ steps.get-latest-tag.outputs.tag }}
