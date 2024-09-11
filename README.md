@@ -1,9 +1,9 @@
-# Degrees of Lewdity 中文本地化发布库
+# Lilith's Throne 中文本地化发布库
 
 ---
 ![Static Badge](https://img.shields.io/badge/Author-Innoxia-purple?link=https%3A%2F%2Flilithsthrone.blogspot.com%2F)
-![GitHub release (with filter)](https://img.shields.io/github/v/release/Eltirosto/Degrees-of-Lewdity-Chinese-Localization?link=https%3A%2F%2Fgithub.com%2Fchinese-liliths-throne%2Fliliths-throne-chinese-release%2Flatest)
-![GitHub all releases](https://img.shields.io/github/downloads/Eltirosto/Degrees-of-Lewdity-Chinese-Localization/total?link=https%3A%2F%2Fgithub.com%2Fchinese-liliths-throne%2Fliliths-throne-chinese-release%2Freleases%2Flatest)
+![GitHub release (with filter)](https://img.shields.io/github/v/release/chinese-liliths-throne/liliths-throne-chinese-release?link=https%3A%2F%2Fgithub.com%2Fchinese-liliths-throne%2Fliliths-throne-chinese-release%2Flatest)
+![GitHub all releases](https://img.shields.io/github/downloads/chinese-liliths-throne/liliths-throne-chinese-release/total?link=https%3A%2F%2Fgithub.com%2Fchinese-liliths-throne%2Fliliths-throne-chinese-release%2Freleases%2Flatest)
 ![GitHub Repo stars](https://img.shields.io/github/stars/chinese-liliths-throne/liliths-throne-chinese-release)
 ![GitHub issues](https://img.shields.io/github/issues-raw/chinese-liliths-throne/liliths-throne-chinese-release)
 
@@ -113,7 +113,8 @@
 ---
 
 ## 致谢名单
-请见 [致谢名单](CREDITS.md)
+* 该 README 文件修改自[DOL汉化发布页](github-dol)
+* 其他请见 [致谢名单](CREDITS.md)
 
 ---
 
@@ -130,6 +131,7 @@
 [blog]: https://lilithsthrone.blogspot.com/
 [wiki]: http://tptiap.co.uk/index.php/Main_Page
 [github]: https://github.com/Innoxia/liliths-throne-public
+[github-dol]: https://github.com/Eltirosto/Degrees-of-Lewdity-Chinese-Localization/tree/main
 [discord]: https://discord.gg/nDRvMXH
 [releases-latest]: https://github.com/chinese-liliths-throne/liliths-throne-chinese-release/releases/latest
 [i18n-mod]: https://github.com/Lyoko-Jeremie/Degrees-of-Lewdity_Mod_i18nMod
