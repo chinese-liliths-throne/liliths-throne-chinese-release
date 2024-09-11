@@ -1,0 +1,62 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Release
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    tags:
+      - '**'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+env:
+  ARTIFACT_PATH: ${{ github.workspace }}/artifacts
+  
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  release:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+      - run: mkdir -p ${{ env.ARTIFACT_PATH }}
+
+      - id: getGames
+        name: Get games
+        uses: robinraju/release-downloader@v1.8
+        with:
+          repository: "chinese-liliths-throne/liliths-throne-chinese-localization"
+          latest: true
+          fileName: liliths-throne*.zip
+          
+      - uses: actions-ecosystem/action-get-latest-tag@v1
+        id: get-latest-tag
+        if: ${{ steps.release-label.outputs.level != null }}
+
+      - run: touch ${{ steps.release-label.outputs.tag }}
+      - run: |
+          for file in ${{ github.workspace }}/*.zip; do
+            zip -r file ${{ steps.release-label.outputs.tag }}
+            mv file ${{ env.ARTIFACT_PATH }}
+          done
+      - name: Create Release.md
+        run: |
+          ls
+
+      - name: Automatic Releases
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.release-label.outputs.tag }}
+          name: "${{ steps.release-label.outputs.tag }}"
+          allowUpdates: true
+          bodyFile: release.md
+          artifacts: |
+            ${{ env.ARTIFACT_PATH }}/*.zip
