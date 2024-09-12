@@ -32,6 +32,12 @@ jobs:
             fetch-depth: 0
 
       - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+          cache: 'pip' # caching pip dependencies
+          
+      - run: pip install marko
+      
       - run: mkdir -p ${{ env.ARTIFACT_PATH }}
 
       - id: getGames
@@ -74,8 +80,19 @@ jobs:
             mv ${file} ${{ env.ARTIFACT_PATH }}
           done
       - name: Create release.md
+        shell: python
         run: |
-          touch release.md
+          import marko
+          from marko import Markdown
+          parser = Markdown()
+          with open("README.md", "r") as f:
+            text = "".join(f.readlines())
+          document = parser.parse(text)
+          update_log = [node for node in document.children if isinstance(node, marko.block.List)][-1]
+          latest_log = update_log.children[0]
+          release_text = parser.render(latest_log)
+          with open("release.md", "w") as f:
+            f.write(release_text)
 
       - name: Automatic Releases
         uses: ncipollo/release-action@v1
