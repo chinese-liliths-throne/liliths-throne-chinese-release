@@ -57,7 +57,8 @@ jobs:
           release_tag = os.getenv('RELEASE_TAG')
           splited = release_tag.split('.')
           splited[-2] = str(int(splited[-2]) + 1)
-          result = '.'join(splited)
+          splited[-1] = "0" + splited[-1][-1]
+          result = '.'.join(splited)
 
           env_file = os.getenv('GITHUB_ENV')
 
