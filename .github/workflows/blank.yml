@@ -32,10 +32,6 @@ jobs:
             fetch-depth: 0
 
       - uses: actions/setup-python@v5
-        with:
-          python-version: '3.9'
-          cache: 'pip' # caching pip dependencies
-          
       - run: pip install marko
       
       - run: mkdir -p ${{ env.ARTIFACT_PATH }}
