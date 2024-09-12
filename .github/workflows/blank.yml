@@ -64,7 +64,7 @@ jobs:
 
           with open(env_file, "a") as myfile:
             myfile.write(f"RELEASE_TAG={result}")
-        # if: ${{ github.event_name == 'schedule' }}
+        if: ${{ github.event_name == 'schedule' }}
 
       - run: touch ${{ env.RELEASE_TAG }}
 
