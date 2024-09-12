@@ -8,6 +8,8 @@ on:
   push:
     tags:
       - '**'
+  schedule:
+    - cron: "0 12 * * MON"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -44,13 +46,30 @@ jobs:
       - uses: actions-ecosystem/action-get-latest-tag@v1
         id: get-latest-tag
 
-      - run: |
-          echo ${{ steps.get-latest-tag.outputs.tag }}
-          touch ${{ steps.get-latest-tag.outputs.tag }}
+      - name: Store tag
+        run: |
+          echo "RELEASE_TAG=${{ steps.get-latest-tag.outputs.tag }}" >> "$GITHUB_ENV"
+
+      - name: Bump version
+        shell: python
+        run: |
+          import os
+          release_tag = os.getenv('RELEASE_TAG')
+          splited = release_tag.split('.')
+          splited[-2] = str(int(splited[-2]) + 1)
+          result = '.'join(splited)
+
+          env_file = os.getenv('GITHUB_ENV')
+
+          with open(env_file, "a") as myfile:
+            myfile.write(f"RELEASE_TAG={result}")
+        # if: ${{ github.event_name == 'schedule' }}
+
+      - run: touch ${{ env.RELEASE_TAG }}
 
       - run: |
           for file in ${{ github.workspace }}/*.zip; do
-            zip -r ${file} ${{ steps.get-latest-tag.outputs.tag }}
+            zip -r ${file} ${{ env.RELEASE_TAG }}
             mv ${file} ${{ env.ARTIFACT_PATH }}
           done
       - name: Create release.md
@@ -60,8 +79,8 @@ jobs:
       - name: Automatic Releases
         uses: ncipollo/release-action@v1
         with:
-          tag: ${{ steps.get-latest-tag.outputs.tag }}
-          name: "${{ steps.get-latest-tag.outputs.tag }}"
+          tag: ${{ env.RELEASE_TAG }}
+          name: "${{ env.RELEASE_TAG }}"
           allowUpdates: true
           bodyFile: release.md
           artifacts: |
