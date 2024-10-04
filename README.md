@@ -11,6 +11,10 @@
 
 [![](https://dcbadge.vercel.app/api/server/nDRvMXH)](https://discord.gg/nDRvMXH)
 
+汉化 Discord 交流服务器：
+
+[![](https://dcbadge.vercel.app/api/server/hqj7WA7PKp)](https://discord.gg/hqj7WA7PKp)
+
 ---
 
 <div align="center">
@@ -41,6 +45,7 @@
   - [Innoxia 的博客][blog]
   - [游戏维基][wiki]
   - [官方 Discord][discord]
+  - [汉化 Discord][discord-zh]
   - [游戏源码仓库][github]
 
 ### 关于本仓库
@@ -133,6 +138,7 @@
 [github]: https://github.com/Innoxia/liliths-throne-public
 [github-dol]: https://github.com/Eltirosto/Degrees-of-Lewdity-Chinese-Localization/tree/main
 [discord]: https://discord.gg/nDRvMXH
+[discord-zh]: https://discord.gg/hqj7WA7PKp
 [releases-latest]: https://github.com/chinese-liliths-throne/liliths-throne-chinese-release/releases/latest
 [i18n-mod]: https://github.com/Lyoko-Jeremie/Degrees-of-Lewdity_Mod_i18nMod
 [i18n-build]: https://github.com/chinese-liliths-throne/liliths-throne-chinese-localization

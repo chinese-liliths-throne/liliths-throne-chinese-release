@@ -45,7 +45,7 @@ jobs:
           preRelease: true
           fileName: liliths-throne*.zip
           
-      - uses: actions-ecosystem/action-get-latest-tag@v1
+      - uses: WyriHaximus/github-action-get-previous-tag@v1
         id: get-latest-tag
 
       - name: Store tag
