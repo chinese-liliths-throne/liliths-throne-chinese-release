@@ -8,8 +8,8 @@ on:
   push:
     tags:
       - '**'
-  # schedule:
-  #   - cron: "0 12 * * MON"
+  schedule:
+    - cron: "0 12 1 * *"
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -45,12 +45,9 @@ jobs:
           preRelease: true
           fileName: liliths-throne*.zip
           
-      - uses: WyriHaximus/github-action-get-previous-tag@v1
-        id: get-latest-tag
-
-      - name: Store tag
-        run: |
-          echo "RELEASE_TAG=${{ steps.get-latest-tag.outputs.tag }}" >> "$GITHUB_ENV"
+      - name : Store latest tag
+        run : |
+          echo "RELEASE_TAG=$(git tag | tail -n 1)" >> "$GITHUB_ENV"
 
       - name: Bump version
         shell: python
