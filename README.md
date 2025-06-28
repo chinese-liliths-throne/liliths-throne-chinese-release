@@ -9,11 +9,11 @@
 
 官方 Discord 交流服务器：
 
-[![](https://dcbadge.vercel.app/api/server/nDRvMXH)](https://discord.gg/nDRvMXH)
+[![](https://dcbadge.limes.pink/api/server/nDRvMXH)](https://discord.gg/nDRvMXH)
 
 汉化 Discord 交流服务器：
 
-[![](https://dcbadge.vercel.app/api/server/hqj7WA7PKp)](https://discord.gg/hqj7WA7PKp)
+[![](https://dcbadge.limes.pink/api/server/hqj7WA7PKp)](https://discord.gg/hqj7WA7PKp)
 
 ---
 
